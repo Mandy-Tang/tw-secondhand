@@ -1,12 +1,10 @@
 import * as React from 'react';
 import { connect, DispatchProp } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
-import { push } from 'react-router-redux';
 
 import * as D from '../../../definitions';
-import * as Components from '../../../components';
 import { userLogin } from '../../../modules/user/actions';
-import {ProductItem }from '../../../components';
+import { Logo, ProductItem, Button }from '../../../components';
 
 import './HomePage.css';
 type HomePageProps<S> = DispatchProp<S> & RouteComponentProps<S> & {
@@ -18,7 +16,7 @@ const HomePage = (props: HomePageProps<object>) => {
     return (
         <div className="App">
             <div className="App-header">
-                <Components.Logo />
+                <Logo />
                 <h2>Welcome to React</h2>
             </div>
             <p className="App-intro">
@@ -30,7 +28,7 @@ const HomePage = (props: HomePageProps<object>) => {
                 Login and get User Name
             </button>
             <p>
-                <button onClick={() => dispatch(push('about-us'))}>Go to About Us</button>
+                <Button destination='about-us' text='Go to About Us' />
             </p>
           <ProductItem/>
         </div>
