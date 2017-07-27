@@ -6,6 +6,7 @@ import { push } from 'react-router-redux';
 import * as D from '../../../definitions';
 import * as Components from '../../../components';
 import { userLogin } from '../../../modules/user/actions';
+import {ProductItem }from '../../../components';
 
 import './HomePage.css';
 type HomePageProps<S> = DispatchProp<S> & RouteComponentProps<S> & {
@@ -31,6 +32,7 @@ const HomePage = (props: HomePageProps<object>) => {
             <p>
                 <button onClick={() => dispatch(push('about-us'))}>Go to About Us</button>
             </p>
+          <ProductItem/>
         </div>
     );
 };
