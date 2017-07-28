@@ -1,10 +1,41 @@
 import * as React from 'react'
 import './ProductItem.css'
 
-const ProductItem = () => {
+interface ProductItemProps {
+  name?: string,
+  img?: string,
+  status?: number,
+  price?: number,
+  buyer?: string,
+}
+
+const ProductItem = (props: ProductItemProps) => {
   return (
-    <div className="productItem">
-      <h1>Product item</h1>
+    <div className={props.status === 0 ? "productItem" : "productItem notActive"}>
+      <div className="productImage">
+        <img
+          src={props.img}
+          alt={props.name}
+          height="150px"
+          width="150px"/></div>
+      <div className="productInfo">
+        <span className="productName">
+          {props.name}
+        </span>
+        <span className="productPrice">
+          ￥{props.price}
+        </span>
+        {
+          props.buyer ?
+            <div className="buyerArea">
+              <div className="buyerIcon"/>
+              <span className="productBuyer">{props.buyer}</span>
+            </div> : ''
+        }
+        <span className="productStatus">
+          {props.status === 0 ? '出售中' : '交易关闭'}
+        </span>
+      </div>
     </div>);
 }
 

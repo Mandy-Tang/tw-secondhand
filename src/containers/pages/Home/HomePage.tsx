@@ -51,7 +51,17 @@ const HomePage = (props: HomePageProps<object>) => {
             <p>
                 <Button destination='about-us' text='Go to About Us' />
             </p>
-          <ProductItem/>
+          <ProductItem
+            name="iphone 6s"
+            price={3000}
+            img="http://cdn2.gsmarena.com/vv/pics/apple/apple-iphone-7-1.jpg"
+            status={1}
+            buyer="pei"/>
+          <ProductItem
+            name="iphone 6s"
+            price={3000}
+            img="http://cdn2.gsmarena.com/vv/pics/apple/apple-iphone-7-1.jpg"
+            status={0}/>
           <MenuBar items={menus}/>
         </div>
     );
