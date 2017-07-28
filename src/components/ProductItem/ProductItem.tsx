@@ -1,6 +1,8 @@
 import * as React from 'react'
 import './ProductItem.css'
 
+const buyerIcon = require('../../containers/resources/buyer.svg')
+
 interface ProductItemProps {
   name?: string,
   img?: string,
@@ -28,7 +30,9 @@ const ProductItem = (props: ProductItemProps) => {
         {
           props.buyer ?
             <div className="buyerArea">
-              <div className="buyerIcon"/>
+              <div className="buyerIcon">
+                <img width="20px" height="20px" src={buyerIcon} alt="buyer"/>
+              </div>
               <span className="productBuyer">{props.buyer}</span>
             </div> : ''
         }

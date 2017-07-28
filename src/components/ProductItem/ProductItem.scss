@@ -10,6 +10,11 @@
   &.notActive {
     background-color: #fbf9f9
   }
+
+  .buyerArea{
+    margin-top: 20px;
+    display: flex;
+  }
 }
 
 .productInfo {
@@ -22,6 +27,8 @@
   span:first-of-type {
     margin-top: 0;
   }
+
+
 }
 
 .productPrice {
@@ -31,3 +38,4 @@
 span {
   margin-top: 20px;
 }
+
