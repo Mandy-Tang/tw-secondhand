@@ -1,0 +1,19 @@
+.menu-parent {
+  list-style: none;
+  background: yellow;
+  li {
+    float: left;
+    a {
+      display: block;
+      background: yellow;
+      padding: 5px 50px;
+    }
+    button {
+      outline: none;
+      border: 0px;
+      display: block;
+      background: yellow;
+      padding: 5px 50px;
+    }
+  }
+}
