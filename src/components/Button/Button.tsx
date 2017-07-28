@@ -4,7 +4,7 @@ import './Button.css'
 
 interface ButtonProps {
     text?: string;
-    destination?: string;
+    destination: string;
 }
 
 const Button = (props: ButtonProps) => (
