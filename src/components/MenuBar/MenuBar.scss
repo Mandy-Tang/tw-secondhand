@@ -1,8 +1,14 @@
 .menu-parent {
+  position: fixed;
+  display: flex;
+  justify-content: space-around;
   list-style: none;
   background: yellow;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  bottom: 0;
   li {
-    float: left;
     a {
       display: block;
       background: yellow;
