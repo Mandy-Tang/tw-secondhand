@@ -3,7 +3,7 @@ import './ProductItem.css'
 
 const buyerIcon = require('../../containers/resources/buyer.svg')
 
-interface ProductItemProps {
+export interface ProductItemProps {
   name?: string,
   img?: string,
   status?: number,

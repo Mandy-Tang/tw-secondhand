@@ -2,6 +2,7 @@ import * as React from 'react';
 import { connect, DispatchProp } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { push } from 'react-router-redux';
+import {layoutWrapper} from "../../Layout/index";
 
 const AboutUsPage = (props: DispatchProp<object> & RouteComponentProps<object>) => (
   <div>
@@ -12,4 +13,4 @@ const AboutUsPage = (props: DispatchProp<object> & RouteComponentProps<object>) 
   </div>
 );
 
-export default connect()(AboutUsPage);
+export default layoutWrapper(connect()(AboutUsPage));
