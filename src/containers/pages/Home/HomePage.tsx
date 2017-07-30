@@ -50,6 +50,9 @@ const HomePage = (props: HomePageProps<object>) => {
             <p>
                 <Button destination='about-us' text='Go to About Us' />
             </p>
+            <p>
+                <Button destination='login' text='登录' disabled={true} />
+            </p>
           <ProductList items={productItems}/>
         </div>
     );

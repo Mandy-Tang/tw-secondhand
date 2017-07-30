@@ -5,12 +5,15 @@ import './Button.css'
 interface ButtonProps {
     text?: string;
     destination: string;
+    disabled?: boolean;
 }
 
-const Button = (props: ButtonProps) => (
-    <button className="button">
-        <Link to={props.destination}>{props.text}</Link>
+const Button = ({disabled = false, ...props}: ButtonProps) => (
+    <Link to={props.destination}>
+    <button className="button" disabled={disabled}>
+        {props.text}
     </button>
-);
+    </Link>   
+)
 
 export default Button;

@@ -5,6 +5,11 @@
     width: 70%;
     font-size: 0.9em;
     border-radius: 0.5em;
+
+    &:disabled {
+        background: #e9e6e6;
+        color: #c7c4c4;
+    }
     a {
         text-decoration: none;
         color: black;
