@@ -10,9 +10,9 @@ interface ButtonProps {
 
 const Button = ({disabled = false, ...props}: ButtonProps) => (
     <Link to={props.destination}>
-    <button className="button" disabled={disabled}>
-        {props.text}
-    </button>
+        <button className="button" disabled={disabled}>
+            {props.text}
+        </button>
     </Link>   
 )
 

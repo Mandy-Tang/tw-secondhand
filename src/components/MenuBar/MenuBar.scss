@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-around;
   list-style: none;
-  background: yellow;
+  background: #fae05e;
   margin: 0;
   padding: 0;
   width: 100%;
@@ -11,14 +11,14 @@
   li {
     a {
       display: block;
-      background: yellow;
+      background: #fae05e;
       padding: 5px 50px;
     }
     button {
       outline: none;
       border: 0px;
       display: block;
-      background: yellow;
+      background: #fae05e;
       padding: 5px 50px;
     }
   }
