@@ -1,3 +1,41 @@
 .productItem {
-  background-color: blanchedalmond;
+  height: 200px;
+  width: 100%;
+  padding: 2% 5%;
+  box-sizing: border-box;
+  justify-content: space-around;
+  display: flex;
+  align-items: center;
+
+  &.notActive {
+    background-color: #fbf9f9
+  }
+
+  .buyerArea{
+    margin-top: 20px;
+    display: flex;
+  }
 }
+
+.productInfo {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  height: 100%;
+  align-items: flex-start;
+
+  span:first-of-type {
+    margin-top: 0;
+  }
+
+
+}
+
+.productPrice {
+  color: orange;
+}
+
+span {
+  margin-top: 20px;
+}
+
