@@ -1,9 +1,16 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { Logo, LoginForm } from '../../../components';
+import './LoginPage.css';
 
 const LoginPage = () => (
   <div>
-    <h2>Login</h2>
+    <div className="login-header">
+      <Logo/>
+    </div>
+    <div className="login-form">
+      <LoginForm/>
+    </div>
   </div>
 );
 
