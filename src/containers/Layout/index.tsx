@@ -1,17 +1,17 @@
-import * as React from 'react'
-import {connect} from 'react-redux'
-import {MenuBar} from '../../components';
+import * as React from 'react';
+import { connect } from 'react-redux';
+import { MenuBar } from '../../components';
 
 const homeIcon = require('../../containers/resources/home.svg');
 const userIcon = require('../../containers/resources/person.svg');
 const addIcon = require('../../containers/resources/Very-Basic-Plus-icon.svg');
 
-const Layout = ({children}) => {
+const Layout = ({ children }) => {
   const menus = [
     {
       id: 'home',
       icon: homeIcon,
-      path: ""
+      path: ''
     },
     {
       id: 'add',
@@ -28,10 +28,10 @@ const Layout = ({children}) => {
       {children}
       <MenuBar items={menus}/>
     </div>
-  )
-}
+  );
+};
 
-const ConnectedLayout = connect()(Layout)
+const ConnectedLayout = connect()(Layout);
 
 const layoutWrapper = InnerContent => (
   function MenuLayout(props) {
@@ -39,9 +39,9 @@ const layoutWrapper = InnerContent => (
       <ConnectedLayout {...props}>
         <InnerContent {...props}/>
       </ConnectedLayout>
-    )
+    );
   }
-)
+);
 
 export {layoutWrapper};
 

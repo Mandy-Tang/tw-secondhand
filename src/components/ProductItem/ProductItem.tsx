@@ -1,25 +1,22 @@
-import * as React from 'react'
-import './ProductItem.css'
+import * as React from 'react';
+import './ProductItem.css';
 
-const buyerIcon = require('../../containers/resources/buyer.svg')
+const buyerIcon = require('../../containers/resources/buyer.svg');
 
 export interface ProductItemProps {
-  name?: string,
-  img?: string,
-  status?: number,
-  price?: number,
-  buyer?: string,
+  name?: string;
+  img?: string;
+  status?: number;
+  price?: number;
+  buyer?: string;
 }
 
 const ProductItem = (props: ProductItemProps) => {
   return (
-    <div className={props.status === 0 ? "productItem" : "productItem notActive"}>
+    <div className={props.status === 0 ? 'productItem' : 'productItem notActive'}>
       <div className="productImage">
-        <img
-          src={props.img}
-          alt={props.name}
-          height="150px"
-          width="150px"/></div>
+        <img src={props.img} alt={props.name} height="150px" width="150px"/>
+      </div>
       <div className="productInfo">
         <span className="productName">
           {props.name}
@@ -41,6 +38,6 @@ const ProductItem = (props: ProductItemProps) => {
         </span>
       </div>
     </div>);
-}
+};
 
 export default ProductItem;
