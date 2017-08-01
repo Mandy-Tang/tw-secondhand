@@ -29,10 +29,10 @@ export interface UserForLogin {
 
 // ACTIONS
 export interface GeneralAction extends Redux.Action {
-    payload?: object,
+    payload?: object;
 }
 export interface UserAction extends GeneralAction {
-    payload?: UserForLogin,
+    payload?: UserForLogin;
 }
 
 // STATES
@@ -40,7 +40,7 @@ export type AppState = App;
 export type UserState = User;
 
 export interface RootState<S> {
-    user?: UserState,
-    app?: AppState,
-    router?: ReactRouter.RouteComponentProps<S>,
+    user?: UserState;
+    app?: AppState;
+    router?: ReactRouter.RouteComponentProps<S>;
 }
