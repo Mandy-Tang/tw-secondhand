@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect, DispatchProp } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { push } from 'react-router-redux';
-import {layoutWrapper} from "../../Layout/index";
+import { PopUpWrapper } from '../../Layout/Popup/PopUp';
 
 const AboutUsPage = (props: DispatchProp<object> & RouteComponentProps<object>) => (
   <div>
@@ -13,4 +13,4 @@ const AboutUsPage = (props: DispatchProp<object> & RouteComponentProps<object>) 
   </div>
 );
 
-export default layoutWrapper(connect()(AboutUsPage));
+export default PopUpWrapper(connect()(AboutUsPage));

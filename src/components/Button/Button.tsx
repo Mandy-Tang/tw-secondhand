@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom'
-import './Button.css'
+import { Link } from 'react-router-dom';
+import './Button.css';
 
 interface ButtonProps {
     text?: string;
@@ -14,6 +14,6 @@ const Button = ({disabled = false, ...props}: ButtonProps) => (
             {props.text}
         </button>
     </Link>   
-)
+);
 
 export default Button;
