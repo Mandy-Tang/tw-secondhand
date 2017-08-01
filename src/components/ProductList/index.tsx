@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { default as ProductItem, ProductItemProps } from '../ProductItem/ProductItem';
+import * as D from '../../definitions';
+import { default as ProductItem } from '../ProductItem/ProductItem';
 
 interface ProductListProps {
-  items?: ProductItemProps[];
+  items?: D.Product[];
 }
 
 const ProductList = (props: ProductListProps) => {

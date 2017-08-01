@@ -1,63 +1,46 @@
 import * as React from 'react';
-import { connect, DispatchProp } from 'react-redux';
-import { RouteComponentProps } from 'react-router';
+import {connect, DispatchProp} from 'react-redux';
+import {RouteComponentProps} from 'react-router';
 
 import * as D from '../../../definitions';
-import { Logo, Button } from '../../../components';
-
 import './HomePage.css';
-import { layoutWrapper } from '../../Layout/index';
+import {layoutWrapper} from '../../Layout/index';
 import ProductList from '../../../components/ProductList/index';
+import { Header } from '../../../components/Header/Header';
+import {fetchProducts} from '../../../modules/product/actions'
 
 type HomePageProps<S> = DispatchProp<S> & RouteComponentProps<S> & {
-    user: D.UserState
+  user: D.UserState;
+  products: D.ProductState;
 };
 
-const productItems = [
-  {
-    name: 'iphone 6s',
-    price: 3000,
-    img: 'http://cdn2.gsmarena.com/vv/pics/apple/apple-iphone-7-1.jpg',
-    status: 1,
-    buyer: 'pei',
-  },
-  {
-    name: 'iphone 6s',
-    price: 3000,
-    img: 'http://cdn2.gsmarena.com/vv/pics/apple/apple-iphone-7-1.jpg',
-    status: 0,
-    buyer: 'pei',
-  },
-  {
-    name: 'iphone 6s',
-    price: 3000,
-    img: 'http://cdn2.gsmarena.com/vv/pics/apple/apple-iphone-7-1.jpg',
-    status: 1,
-    buyer: 'pei',
+class HomePage extends React.Component<HomePageProps<object>> {
+  constructor(props) {
+    super(props);
   }
-];
 
-const HomePage = (props: HomePageProps<object>) => {
+  componentDidMount() {
+    this.props.dispatch(fetchProducts());
+  }
+
+  render() {
+    console.log(this.props);
     return (
-        <div className="App">
-            <div className="App-header">
-                <Logo />
-                <h2>Welcome to React</h2>
-            </div>
-            <p className="App-intro">
-                To get started, edit <code>src/App.tsx</code> and save to reload.
-            </p>
-            <p>
-                <Button destination="about-us" text="Go to About Us" />
-            </p>
-            <p>
-                <Button destination="login" text="登录" disabled={true} />
-            </p>
-          <ProductList items={productItems}/>
-        </div>
+      <div className="App">
+        <Header title="精选"/>
+        <ProductList items={this.props.products}/>
+      </div>
     );
+  }
+}
+
+const mapStateToProps = (state: D.RootState<object>) => {
+  return {
+    user: state.user,
+    products:state.products,
+  }
 };
 
 export default layoutWrapper(connect(
-    (state: D.RootState<object>) => ({user: state.user})
+  mapStateToProps
 )(HomePage));

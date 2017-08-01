@@ -13,7 +13,7 @@ export interface ProductItemProps {
 
 const ProductItem = (props: ProductItemProps) => {
   return (
-    <div className={props.status === 0 ? 'productItem' : 'productItem notActive'}>
+    <div className={props.buyer ? 'productItem notActive' : 'productItem'}>
       <div className="productImage">
         <img src={props.img} alt={props.name} height="150px" width="150px"/>
       </div>
@@ -34,7 +34,7 @@ const ProductItem = (props: ProductItemProps) => {
             </div> : ''
         }
         <span className="productStatus">
-          {props.status === 0 ? '出售中' : '交易关闭'}
+          {props.buyer ? '交易关闭':'出售中'}
         </span>
       </div>
     </div>);
