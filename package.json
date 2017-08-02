@@ -40,7 +40,8 @@
     "react-addons-test-utils": "15.4.2",
     "react-scripts-ts-tw": "^1.0.7",
     "react-test-renderer": "^15.6.1",
-    "typescript": "2.3.4"
+    "typescript": "2.3.4",
+    "@storybook/react": "^3.2.3"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",
@@ -52,6 +53,8 @@
     "c": "react-scripts-ts-tw init",
     "test": "react-scripts-ts-tw test --env=jsdom",
     "eject": "react-scripts-ts-tw eject",
-    "cover": "react-scripts-ts-tw test --env=jsdom --coverage"
+    "cover": "react-scripts-ts-tw test --env=jsdom --coverage",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   }
 }
