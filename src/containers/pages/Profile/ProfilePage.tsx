@@ -6,18 +6,18 @@ import { Header, Logo, Button } from '../../../components';
 import './ProfilePage.css';
 
 export type ProfileProps<S> = DispatchProp<S> & RouteComponentProps<S> & {
-    user: object;
+    username: string;
 };
 
 class ProfilePage extends React.Component<ProfileProps<object>> {
     render() {
-        // const { user } = this.props;
+        const { username } = this.props;
         return (
             <div className="profile">
                 <Header title="个人信息" />
                 <div className="profileInfo">
                     <Logo />
-                    <span className="profileName">user</span>
+                    <span className="profileName">{username}</span>
                 </div>
                 <p>
                 <Button destination="" text="已买宝贝" />
@@ -34,5 +34,5 @@ class ProfilePage extends React.Component<ProfileProps<object>> {
 }
 
 export default layoutWrapper(connect(state => ({
-    user: state.user
+    username: state.user.username
 }))(ProfilePage));
