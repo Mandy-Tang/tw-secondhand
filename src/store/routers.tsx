@@ -7,6 +7,7 @@ import LoginPage from '../containers/pages/Login/LoginPage';
 import ProductDetailPage from '../containers/pages/ProductDetail/ProductDetailPage';
 import ProfilePage from '../containers/pages/Profile/ProfilePage';
 import SignUpPage from '../containers/pages/SignUp/SignUpPage';
+import BoughtPage from '../containers/pages/Bought/BoughtPage';
 
 const router = (
   <div>
@@ -16,6 +17,7 @@ const router = (
     <Route path="/sign-up" component={SignUpPage}/>
     <Route path="/productDetail" component={ProductDetailPage}/>
     <Route path="/profile" component={ProfilePage}/>
+    <Route path="/bought" component={BoughtPage}/>
   </div>
 );
 

@@ -9,12 +9,12 @@ import ProductList from '../../../components/ProductList/index';
 import Header from '../../../components/Header/Header';
 import {fetchProducts} from '../../../modules/product/actions';
 
-type HomePageProps<S> = DispatchProp<S> & RouteComponentProps<S> & {
+export type PageProps<S> = DispatchProp<S> & RouteComponentProps<S> & {
   user: D.UserState;
   products: D.ProductState;
 };
 
-class HomePage extends React.Component<HomePageProps<object>> {
+class HomePage extends React.Component<PageProps<object>> {
   constructor(props) {
     super(props);
   }

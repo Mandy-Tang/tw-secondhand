@@ -20,7 +20,7 @@ class ProfilePage extends React.Component<ProfileProps<object>> {
                     <span className="profileName">{username}</span>
                 </div>
                 <p>
-                <Button destination="" text="已买宝贝" />
+                <Button destination="bought" text="已买宝贝" />
                 </p>
                 <p>
                 <Button destination="" text="出售宝贝" />
