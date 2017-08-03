@@ -1,0 +1,12 @@
+.fileUpload {
+  display: flex;
+  justify-content: center;
+  background-color: #faf7f7;
+  label{
+    cursor: pointer;
+  }
+  input[type="file"] {
+    display: none;
+  }
+  padding-bottom: 10px;
+}

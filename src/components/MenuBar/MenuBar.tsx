@@ -4,6 +4,7 @@ import './MenuBar.css';
 
 interface MenuProps {
   items?: MenuItemModel[];
+  selectedIndex?: number;
 }
 
 export class MenuBar extends React.Component<MenuProps> {
@@ -14,8 +15,8 @@ export class MenuBar extends React.Component<MenuProps> {
   public render() {
     const items = this.props.items;
     let menus = [];
-    items.forEach((item) => {
-      menus.push(<MenuItem key={item.id} item={item} />);
+    items.forEach((item, index) => {
+      menus.push(<MenuItem key={item.id} item={item} selected={index === this.props.selectedIndex}/>);
     });
     return <ul className="menu-parent">{menus}</ul>;
   }

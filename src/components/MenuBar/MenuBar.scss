@@ -9,17 +9,13 @@
   width: 100%;
   bottom: 0;
   li {
+    background-color: #fae05e;
     a {
       display: block;
-      background: #fae05e;
       padding: 5px 50px;
     }
-    button {
-      outline: none;
-      border: 0px;
-      display: block;
-      background: #fae05e;
-      padding: 5px 50px;
+    &.selectedItem{
+      background-color: white;
     }
   }
 }

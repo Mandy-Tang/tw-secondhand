@@ -13,33 +13,45 @@ type MenuLayoutProp<S> = DispatchProp<S> & RouteComponentProps<S> & {
   user: D.UserState
 };
 
-const Layout = ({children}) => {
+const Layout = ({children, location}) => {
   const menus = [
     {
       id: 'home',
       icon: homeIcon,
-      path: ''
+      path: '/',
+      type: 'tab'
     },
     {
       id: 'add',
-      icon: addIcon
+      icon: addIcon,
+      path: '/release'
     },
     {
       id: 'user',
       icon: userIcon,
-      path: 'profile'
+      path: '/profile',
+      type: 'tab'
     }
   ];
+
+  let selectedIndex = 0;
+  menus.map((e, index) => {
+    if (e.path === location.pathname) {
+      selectedIndex = index;
+    }
+  })
   return (
     <div className="layoutWrapper">
       <Loader/>
       {children}
-      <MenuBar items={menus}/>
+      <MenuBar items={menus} selectedIndex={selectedIndex}/>
     </div>
   );
 };
 
-const ConnectedLayout = connect()(Layout);
+const ConnectedLayout = connect((state) => {
+  return {location: state.router.location}
+})(Layout);
 
 const layoutWrapper = InnerContent => (
   function MenuLayout(props: MenuLayoutProp<Object>) {
