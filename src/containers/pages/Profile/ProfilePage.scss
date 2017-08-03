@@ -1,0 +1,14 @@
+.profile {
+    text-align: center;
+
+    .profileInfo {
+        width: 70%;
+        margin: 2.5em auto;
+        padding: 2em 0;
+        box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+    }
+
+    p {
+        margin: 2em 0;
+    }
+}
