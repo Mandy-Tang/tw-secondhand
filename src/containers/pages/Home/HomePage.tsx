@@ -1,13 +1,13 @@
 import * as React from 'react';
-import {connect, DispatchProp} from 'react-redux';
-import {RouteComponentProps} from 'react-router';
+import { connect, DispatchProp } from 'react-redux';
+import { RouteComponentProps } from 'react-router';
 
 import * as D from '../../../definitions';
 import './HomePage.css';
-import {layoutWrapper} from '../../Layout/index';
+import { layoutWrapper } from '../../Layout/index';
 import ProductList from '../../../components/ProductList/index';
 import Header from '../../../components/Header/Header';
-import {fetchProducts} from '../../../modules/product/actions'
+import {fetchProducts} from '../../../modules/product/actions';
 
 type HomePageProps<S> = DispatchProp<S> & RouteComponentProps<S> & {
   user: D.UserState;
@@ -37,7 +37,7 @@ class HomePage extends React.Component<HomePageProps<object>> {
 const mapStateToProps = (state: D.RootState<object>) => {
   return {
     user: state.user,
-    products:state.products,
+    products: state.products,
   }
 };
 

@@ -3,7 +3,7 @@ import './LoginForm.css';
 import Button from '../Button/Button';
 
 interface LoginFormProps {
-  submit?: Function;
+  onLogin?: Function;
 }
 interface LoginFormState {
   username: string;
@@ -18,19 +18,23 @@ class LoginForm extends React.Component<LoginFormProps, LoginFormState> {
       username: '',
       password: '',
     };
-    this.handleUsernameChange = this.handleUsernameChange.bind(this);
-    this.handlePasswordChange = this.handlePasswordChange.bind(this);
-    this.validate = this.validate.bind(this);
   }
-  handleUsernameChange (e: React.SyntheticEvent<HTMLInputElement>): void {
+  handleUsernameChange = (e: React.SyntheticEvent<HTMLInputElement>): void => {
     let target = e.target as HTMLInputElement;
     this.setState({username: target.value});
   }
-  handlePasswordChange (e: React.SyntheticEvent<HTMLInputElement>): void {
+  handlePasswordChange = (e: React.SyntheticEvent<HTMLInputElement>): void => {
     let target = e.target as HTMLInputElement;
     this.setState({password: target.value});
   }
-  validate (): boolean {
+  handleLogin = (): void  => {
+    const user = {
+      username: this.state.username,
+      password: this.state.password
+    };
+    this.props.onLogin(user);
+  }
+  validate = (): boolean => {
     return !Boolean(this.state.username && this.state.password) ;
   }
 
@@ -52,6 +56,7 @@ class LoginForm extends React.Component<LoginFormProps, LoginFormState> {
           onChange={this.handlePasswordChange}
         />
         <div className="btn-wrapper"><Button text="Login" destination="/" disabled={this.validate()}/></div>
+        <div className="btn-wrapper"><button onClick={this.handleLogin}>Login</button></div>
         <div className="btn-wrapper"><Button text="Sign-up" destination="/sign-up"/></div>
       </div>
     );
