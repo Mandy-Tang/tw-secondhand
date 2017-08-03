@@ -1,10 +1,10 @@
-import * as React from 'react'
+import * as React from 'react';
 
 interface HeaderProps {
   title: string;
 }
 
-export const Header = (props: HeaderProps) => {
+const Header = (props: HeaderProps) => {
   return (
     <div className="Header">
       <h3>{props.title}</h3>
@@ -12,4 +12,4 @@ export const Header = (props: HeaderProps) => {
   );
 };
 
-
+export default Header;

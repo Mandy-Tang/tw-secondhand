@@ -25,7 +25,7 @@ const Layout = ({ children }) => {
     {
       id: 'user',
       icon: userIcon,
-      path: 'about-us'
+      path: 'profile'
     }
   ];
   return (

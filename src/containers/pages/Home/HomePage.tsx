@@ -6,7 +6,7 @@ import * as D from '../../../definitions';
 import './HomePage.css';
 import {layoutWrapper} from '../../Layout/index';
 import ProductList from '../../../components/ProductList/index';
-import { Header } from '../../../components/Header/Header';
+import Header from '../../../components/Header/Header';
 import {fetchProducts} from '../../../modules/product/actions'
 
 type HomePageProps<S> = DispatchProp<S> & RouteComponentProps<S> & {
