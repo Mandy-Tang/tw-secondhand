@@ -10,4 +10,6 @@ export {default as LoginForm} from './LoginForm/LoginForm';
 
 export {default as SignUpForm} from './SignUpForm/SignUpForm';
 
+export {default as ProductDetail, ProductDetailProps} from './ProductDetail/ProductDetail';
+
 export { MenuBar } from './MenuBar/MenuBar';
