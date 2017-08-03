@@ -1,0 +1,15 @@
+.input {
+  display: block;
+  width: 80%;
+  margin: 60px auto;
+  border: none;
+  border-bottom: 1px #ccc solid;
+  font-size: 14px;
+}
+.input:focus {
+  outline: none;
+}
+.btn-wrapper {
+  text-align: center;
+  margin: 20px auto;
+}
