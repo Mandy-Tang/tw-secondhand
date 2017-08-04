@@ -3,6 +3,7 @@ import * as Redux from 'redux';
 import { connect, DispatchProp } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { Logo, SignUpForm } from '../../../components';
+import { PopUpWrapper } from '../../Layout/Popup/PopUp';
 import './SignUpPage.css';
 import { userSignUp } from '../../../modules/user/actions';
 import { bindActionCreators } from 'redux';
@@ -28,4 +29,4 @@ function mapDispatchToProps (dispatch: Redux.Dispatch<object>) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(SignUpPage);
+export default PopUpWrapper(connect(null, mapDispatchToProps)(SignUpPage));
