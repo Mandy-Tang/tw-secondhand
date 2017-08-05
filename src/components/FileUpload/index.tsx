@@ -5,9 +5,14 @@ const uploadImageLogo = require('../../containers/resources/uploading-archive.sv
 
 interface FileUploadProps {
   uploadedImage?: string;
+  onImageUpload?: any;
 }
 
 const FileUpload = (props: FileUploadProps) => {
+  const handleImageSubmit = (e) => {
+    e.preventDefault();
+    props.onImageUpload(e.target.files[0]);
+  };
   return <div className="fileUpload">
     {
       props.uploadedImage ? (<img src={props.uploadedImage} alt="preview-image" height="120px" width="120px"/>) : (
@@ -17,7 +22,7 @@ const FileUpload = (props: FileUploadProps) => {
               <p>点击上传图片</p>
               <img src={uploadImageLogo} alt="uploadImageLogo" height="80px" width="80px"/>
             </label>
-            <input id="file-upload" type="file"/>
+            <input id="file-upload" type="file" onChange={handleImageSubmit}/>
           </div>
         )
       )

@@ -1,21 +1,32 @@
 import * as React from 'react'
 import FileUpload from "../../../components/FileUpload/index";
 import './index.css'
-import { connect } from "react-redux";
+import { connect, DispatchProp } from "react-redux";
 import { PopUpWrapper } from "../../Layout/Popup/PopUp";
 import Header from "../../../components/Header/Header";
 import Button from "../../../components/Button/Button";
+import { RouteComponentProps } from "react-router";
+import { uploadImageActionCreator } from "../../../modules/product/actions";
 
-class ReleasePage extends React.Component {
+export type PageProps<S> = DispatchProp<S> & RouteComponentProps<S> & {
+  uploadedImg?: string
+};
+
+class ReleasePage extends React.Component<PageProps<Object>> {
   constructor(props) {
-    super(props)
+    super(props);
+    this.handleImageUpload = this.handleImageUpload.bind(this);
+  }
+
+  handleImageUpload(file) {
+    this.props.dispatch(uploadImageActionCreator(file));
   }
 
   render() {
     return (
       <div>
         <Header title="发布宝贝"/>
-        <FileUpload/>
+        <FileUpload onImageUpload={this.handleImageUpload} uploadedImage={this.props.uploadedImg}/>
         <form action="" method="post">
           <div className="inputGroup">
             <input name="name" type="text" placeholder="商品名称"/>
@@ -32,4 +43,9 @@ class ReleasePage extends React.Component {
   }
 }
 
-export default PopUpWrapper(connect()(ReleasePage));
+const mapStateToProps = (state) => {
+  return {
+    uploadedImg: state.uploadImg,
+  }
+}
+export default PopUpWrapper(connect(mapStateToProps)(ReleasePage));

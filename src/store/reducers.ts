@@ -4,11 +4,13 @@ import app from '../modules/app/reducer';
 import user from '../modules/user/reducer';
 import products from '../modules/product/reducer'
 import loader from '../modules/loader/reducer'
+import uploadImg from '../modules/uploadImage/reducer'
 
 export default {
-    app,
-    user,
-    router,
-    products,
-    loader,
+  app,
+  user,
+  router,
+  products,
+  loader,
+  uploadImg,
 };
