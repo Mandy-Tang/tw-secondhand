@@ -1,0 +1,18 @@
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 30px;
+  input {
+    font-size: medium;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid gray;
+    margin-bottom: 50px;
+  }
+  textarea{
+    font-size: medium;
+    margin-bottom: 30px;
+    outline: none;
+    border: 1px solid gray;
+  }
+}
