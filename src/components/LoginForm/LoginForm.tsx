@@ -8,7 +8,8 @@ interface LoginFormProps {
 interface LoginFormState {
   username: string;
   password: string;
-  disabled?: boolean;
+  errorMessage: string;
+  invalid: boolean;
 }
 
 class LoginForm extends React.Component<LoginFormProps, LoginFormState> {
@@ -17,17 +18,20 @@ class LoginForm extends React.Component<LoginFormProps, LoginFormState> {
     this.state = {
       username: '',
       password: '',
+      errorMessage: '',
+      invalid: false
     };
   }
   handleUsernameChange = (e: React.SyntheticEvent<HTMLInputElement>): void => {
     let target = e.target as HTMLInputElement;
-    this.setState({username: target.value});
+    this.setState({username: target.value}, this.validate);
   }
   handlePasswordChange = (e: React.SyntheticEvent<HTMLInputElement>): void => {
     let target = e.target as HTMLInputElement;
-    this.setState({password: target.value});
+    this.setState({password: target.value}, this.validate);
   }
-  handleLogin = (): void  => {
+  handleLogin = (e): void  => {
+    e.preventDefault();
     const user = {
       username: this.state.username,
       password: this.state.password
@@ -35,12 +39,22 @@ class LoginForm extends React.Component<LoginFormProps, LoginFormState> {
     this.props.onLogin(user);
   }
   validate = (): boolean => {
-    return !Boolean(this.state.username && this.state.password) ;
+    if (!Boolean(this.state.username)) {
+      this.setState({errorMessage: 'Please enter your username', invalid: true});
+      return false;
+    } else if (!Boolean(this.state.password)) {
+      this.setState({errorMessage: 'Please enter your password', invalid: true});
+      return false;
+    } else {
+      this.setState({errorMessage: '', invalid: false});
+      return true;
+    }
   }
 
   public render () {
     return (
       <div>
+        <p className="error-message">{this.state.errorMessage}</p>
         <input
           type="text"
           className="input"
@@ -55,9 +69,12 @@ class LoginForm extends React.Component<LoginFormProps, LoginFormState> {
           value={this.state.password}
           onChange={this.handlePasswordChange}
         />
-        <div className="btn-wrapper"><Button text="Login" destination="/" disabled={this.validate()}/></div>
-        <div className="btn-wrapper"><button onClick={this.handleLogin}>Login</button></div>
-        <div className="btn-wrapper"><Button text="Sign-up" destination="/sign-up"/></div>
+        <div className="btn-wrapper">
+          <Button text="Login" destination="/" handleClick={this.handleLogin} disabled={this.state.invalid}/>
+        </div>
+        <div className="btn-wrapper">
+          <Button text="Sign-up" destination="/sign-up"/>
+        </div>
       </div>
     );
   }
