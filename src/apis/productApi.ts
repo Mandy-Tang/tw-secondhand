@@ -1,5 +1,5 @@
 import * as D from '../definitions';
-import { FETCH_PRODUCTS_API, UPLOAD_IMAGE_API } from './urls'
+import { FETCH_PRODUCTS_API, POST_PRODUCT_API, UPLOAD_IMAGE_API } from './urls'
 import { fetchJson } from './utils';
 
 let myHeaders = new Headers();
@@ -16,6 +16,16 @@ export const uploadImage = (file) => {
     body: formData,
   });
 }
+
+export const postProduct = (createProduct: D.Product) => {
+  myHeaders.append('Content-Type', 'application/json');
+  return fetchJson(POST_PRODUCT_API, {
+      method: 'POST',
+      headers: myHeaders,
+      body: JSON.stringify(createProduct),
+    }
+  )
+};
 
 
 

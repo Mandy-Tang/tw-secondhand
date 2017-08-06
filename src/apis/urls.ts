@@ -5,3 +5,4 @@ export const USER_SIGN_UP_API = `${host}/users/register`;
 export const USER_LOGOUT_API = `${host}/users/logout`;
 export const FETCH_PRODUCTS_API = `${host}/products`;
 export const UPLOAD_IMAGE_API = `${host}/products/upload`;
+export const POST_PRODUCT_API = `${host}/products/create`;

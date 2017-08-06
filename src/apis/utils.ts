@@ -4,4 +4,6 @@ export const fetchJson = (url, option?) => fetch(url, option)
       return response.json();
     }
     throw response;
+  }).catch((e) => {
+    console.log(`error:${JSON.stringify(e)}`)
   });
