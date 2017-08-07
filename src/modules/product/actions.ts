@@ -42,7 +42,7 @@ const fetchProductEpic = (action$, store) => action$.thru(select('FETCH_PRODUCTS
   });
 
 const uploadImageEpic = (action$, store) => action$.thru(select('UPLOAD_IMAGE'))
-  .chain((action$) => {
+  .chain(() => {
     store.dispatch({type: 'UPDATE_LOADER', payload: true});
     return fromPromise(uploadImage(action$.payload));
   })
@@ -64,8 +64,7 @@ const postProductEpic = (action$, store) => action$.thru(select('POST_PRODUCT'))
 const buyProductEpic = (action$, store) => action$.thru(select('BUY_PRODUCT'))
   .chain((action$) => {
     return fromPromise(buyProduct(action$.payload))
-  }).map((results) => {
-    console.log(results);
+  }).map(() => {
     return {type: 'FETCH_PRODUCTS'}
   });
 
