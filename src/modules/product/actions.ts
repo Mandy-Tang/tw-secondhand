@@ -55,8 +55,9 @@ const postProductEpic = (action$, store) => action$.thru(select('POST_PRODUCT'))
   .chain((action$) => {
     store.dispatch({type: 'UPDATE_LOADER', payload: true});
     return fromPromise(postProduct(action$.payload));
-  }).map((result) => {
+  }).map(() => {
     store.dispatch({type: 'UPDATE_LOADER', payload: false});
+    store.dispatch({type: 'UPDATE_UPLOAD_IMAGE', payload: ''})
     return {type: 'FETCH_PRODUCTS'};
   });
   
