@@ -23,7 +23,7 @@ class ProfilePage extends React.Component<ProfileProps<object>> {
                 <Button destination="bought" text="已买宝贝" />
                 </p>
                 <p>
-                <Button destination="" text="出售宝贝" />
+                <Button destination="owned" text="出售宝贝" />
                 </p>
                 <p>
                 <Button destination="" text="退出登录" />

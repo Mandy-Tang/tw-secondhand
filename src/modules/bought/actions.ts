@@ -28,5 +28,5 @@ const fetchBoughtEpic = (action$, store) => action$.thru(select('FETCH_BOUGHT'))
   });
 
 export const epics: Array<Epic<D.GeneralAction>> = [
-    fetchBoughtEpic
+    fetchBoughtEpic,
 ];
