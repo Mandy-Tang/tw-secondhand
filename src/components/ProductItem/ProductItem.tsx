@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import './ProductItem.css';
 
 const buyerIcon = require('../../containers/resources/buyer.svg');
@@ -12,19 +13,28 @@ export interface ProductItemProps {
     objectId?: string;
     username?: string;
   };
+  id?: number;
 }
 
 const ProductItem = (props: ProductItemProps) => {
+  debugger;
   return (
-    <div className={props.buyer ? 'productItem notActive' : 'productItem'}>
-      <div className="productImage">
-        <img src={props.img} alt={props.name} height="150px" width="150px"/>
-      </div>
-      <div className="productInfo">
+    <Link to={
+      {
+        pathname: "/productDetail",
+        search: `?id=${props.id}`,
+        state: {fromDashboard: true}
+      }
+    }>
+      <div className={props.buyer ? 'productItem notActive' : 'productItem'}>
+        <div className="productImage">
+          <img src={props.img} alt={props.name} height="150px" width="150px"/>
+        </div>
+        <div className="productInfo">
         <span className="productName">
           {props.name}
         </span>
-        <span className="productPrice">
+          <span className="productPrice">
           ￥{props.price}
         </span>
         {
@@ -39,8 +49,10 @@ const ProductItem = (props: ProductItemProps) => {
         <span className="productStatus">
           {props.buyer ? '交易关闭':'出售中'}
         </span>
+        </div>
       </div>
-    </div>);
+    </Link>
+  );
 };
 
 export default ProductItem;

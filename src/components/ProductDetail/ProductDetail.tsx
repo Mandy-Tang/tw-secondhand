@@ -9,12 +9,17 @@ export interface ProductDetailProps {
   name?: string;
   img?: string;
   price?: number;
-  buyer?: string;
+  buyer?: object;
+  owner?: {
+    username?: string;
+    objectId?: string;
+  };
   description?: string;
 }
+
 class ProductDetail extends React.Component<ProductDetailProps> {
 
-  handleBuy = (): void  => {
+  handleBuy = (): void => {
     console.log("buy");
   };
 
@@ -31,12 +36,12 @@ class ProductDetail extends React.Component<ProductDetailProps> {
           <div className="product-price">
             ￥{this.props.price}
             {
-              this.props.buyer ?
+              this.props.owner ?
                 <div className="buyer-area">
                 <span className="buyerIcon">
                   <img width="20px" height="20px" src={buyerIcon} alt="buyer"/>
                 </span>
-                  <span className="productBuyer">{this.props.buyer}</span>
+                  <span className="productBuyer">{this.props.owner.username}</span>
                 </div> : ''
             }
           </div>
@@ -45,7 +50,9 @@ class ProductDetail extends React.Component<ProductDetailProps> {
         <div className="product-details">
           {this.props.description}
         </div>
-        <div className="btn-wrapper"><button onClick={this.handleBuy}>立刻购买</button></div>
+        <div className="btn-wrapper">
+          <button onClick={this.handleBuy}>立刻购买</button>
+        </div>
       </div>);
   };
 

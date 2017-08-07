@@ -23,6 +23,9 @@
     font-size: 26px;
   }
   .product-price {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     color: #ff001f;
   }
 }

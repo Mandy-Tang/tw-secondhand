@@ -1,44 +1,50 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
+import { connect, DispatchProp } from 'react-redux';
+import * as D from '../../../definitions';
 
 import './ProductDetailPage.css';
-import { ProductDetail, ProductDetailProps } from '../../../components';
+import { ProductDetail } from '../../../components';
 import { Header } from '../../../components';
 import { PopUpWrapper } from '../../Layout/Popup/PopUp';
+import { RouteComponentProps } from "react-router";
 
-interface ProductDetailPageProps {
-  detail?: ProductDetailProps
+type ProductDetailPageProps<S> = DispatchProp<S> & RouteComponentProps<S> & {
+  products?: D.ProductState;
 };
 
-export class ProductDetailPage extends React.Component<ProductDetailPageProps> {
+export class ProductDetailPage extends React.Component<ProductDetailPageProps<Object>> {
+  private productId: number;
 
   constructor(props) {
     super(props);
+
+  }
+
+  componentWillMount() {
+    this.productId = parseInt(this.props.location.search.substring(1).split('=')[1]);
   }
 
   render() {
-    let testData = {
-      objectId: "324324324",
-      name: 'iphone 6s',
-      price: 3000,
-      img: 'http://cdn2.gsmarena.com/vv/pics/apple/apple-iphone-7-1.jpg',
-      status: 1,
-      buyer: 'pei',
-      description: 'rwerwe'
-  };
+    let product = this.props.products[this.productId];
     return (
       <div>
         <div className="App">
           <Header title="商品详情"/>
         </div>
         <div>
-          {/*<ProductDetail key={this.props.detail.objectId} name={this.props.detail.name} img={this.props.detail.name} description={this.props.detail.description} buyer={this.props.detail.buyer} price={this.props.detail.price}/>*/}
-          <ProductDetail key={testData.objectId} name={testData.name} img={testData.img} description={testData.description} buyer={testData.buyer} price={testData.price}/>
+          {product ?
+            <ProductDetail key={product.objectId} name={product.name} img={product.img}
+                           description={product.description} owner={product.owner} price={product.price}/>
+            : ""
+          }
         </div>
       </div>
     );
   }
 }
 
-export default PopUpWrapper(connect()(ProductDetailPage));
-
+export default PopUpWrapper(connect((state) => {
+  return {
+    products: state.products,
+  }
+})(ProductDetailPage));
