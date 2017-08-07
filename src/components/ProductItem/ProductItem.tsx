@@ -17,7 +17,6 @@ export interface ProductItemProps {
 }
 
 const ProductItem = (props: ProductItemProps) => {
-  debugger;
   return (
     <Link to={
       {
