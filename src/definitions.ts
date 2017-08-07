@@ -24,6 +24,11 @@ export interface UserForLogin {
   password: string;
 }
 
+export interface UserForLoginResponse {
+  username: string;
+  sessionToken: string;
+}
+
 export interface Product {
   description?: string;
   name: string;

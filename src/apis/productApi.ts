@@ -15,7 +15,5 @@ export const uploadImage = (file) => {
     headers: myHeaders,
     body: formData,
   });
-}
-
-
+};
 
