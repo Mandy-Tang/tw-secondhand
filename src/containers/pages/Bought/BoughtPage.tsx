@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { PopUpWrapper } from '../../Layout/Popup/PopUp';
 import { Header, ProductList } from '../../../components';
-import { fetchProducts } from '../../../modules/product/actions';
+import { fetchBoughts } from '../../../modules/bought/actions';
 import { PageProps } from '../Home/HomePage';
 
 class BoughtPage extends React.Component<PageProps<object>> {
@@ -11,19 +11,18 @@ class BoughtPage extends React.Component<PageProps<object>> {
     }
 
     componentDidMount() {
-        this.props.dispatch(fetchProducts());
+        this.props.dispatch(fetchBoughts());
     }
     render() {
         return (
             <div className="bought">
                 <Header title="已买宝贝"/>
-                <p>
                 <ProductList items={this.props.products}/>
-                </p>
             </div>
         );
     }
 }
 export default PopUpWrapper(connect(state => ({
-    products: state.products
+    user: state.user,
+    products: state.boughts
 }))(BoughtPage));
