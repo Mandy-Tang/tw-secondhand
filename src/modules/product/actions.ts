@@ -1,4 +1,4 @@
-import { fetchProduct, postProduct, uploadImage } from '../../apis/productApi';
+import { fetchProduct, postProduct, uploadImage, buyProduct } from '../../apis/productApi';
 import { fromPromise } from 'most';
 import { select, Epic } from 'redux-most';
 import { Product } from '../../definitions';
@@ -60,9 +60,18 @@ const postProductEpic = (action$, store) => action$.thru(select('POST_PRODUCT'))
     store.dispatch({type: 'UPDATE_UPLOAD_IMAGE', payload: ''})
     return {type: 'FETCH_PRODUCTS'};
   });
-  
+
+const buyProductEpic = (action$, store) => action$.thru(select('BUY_PRODUCT'))
+  .chain((action$) => {
+    return fromPromise(buyProduct(action$.payload))
+  }).map((results) => {
+    console.log(results);
+    return {type: 'FETCH_PRODUCTS'}
+  });
+
 export const epics: Array<Epic<D.GeneralAction>> = [
   fetchProductEpic,
   uploadImageEpic,
   postProductEpic,
+  buyProductEpic,
 ];

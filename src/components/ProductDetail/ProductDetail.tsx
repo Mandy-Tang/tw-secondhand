@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './ProductDetail.css';
-// import { default as Button } from '../Button/Button';
+import Button from '../Button/Button';
 
 const buyerIcon = require('../../containers/resources/buyer.svg');
 
@@ -15,12 +15,13 @@ export interface ProductDetailProps {
     objectId?: string;
   };
   description?: string;
+  handleBuy?: any;
 }
 
 class ProductDetail extends React.Component<ProductDetailProps> {
 
   handleBuy = (): void => {
-    console.log("buy");
+    this.props.handleBuy();
   };
 
   public render() {
@@ -51,7 +52,7 @@ class ProductDetail extends React.Component<ProductDetailProps> {
           {this.props.description}
         </div>
         <div className="btn-wrapper">
-          <button onClick={this.handleBuy}>立刻购买</button>
+          <Button destination="/" text="立即购买" handleClick={this.handleBuy}/>
         </div>
       </div>);
   };

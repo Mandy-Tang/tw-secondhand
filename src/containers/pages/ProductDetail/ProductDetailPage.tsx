@@ -14,14 +14,23 @@ type ProductDetailPageProps<S> = DispatchProp<S> & RouteComponentProps<S> & {
 
 export class ProductDetailPage extends React.Component<ProductDetailPageProps<Object>> {
   private productId: number;
+  private product: D.Product;
 
   constructor(props) {
     super(props);
+    this.handleBuy = this.handleBuy.bind(this);
+  }
 
+  handleBuy() {
+    this.props.dispatch({
+      type: 'BUY_PRODUCT',
+      payload: this.product.objectId,
+    })
   }
 
   componentWillMount() {
     this.productId = parseInt(this.props.location.search.substring(1).split('=')[1]);
+    this.product = this.props.products[this.productId];
   }
 
   render() {
@@ -33,9 +42,13 @@ export class ProductDetailPage extends React.Component<ProductDetailPageProps<Ob
         </div>
         <div>
           {product ?
-            <ProductDetail key={product.objectId} name={product.name} img={product.img}
-                           description={product.description} owner={product.owner} price={product.price}/>
-            : ""
+            <ProductDetail key={product.objectId}
+                           name={product.name}
+                           img={product.img}
+                           description={product.description}
+                           owner={product.owner}
+                           price={product.price}
+                           handleBuy={this.handleBuy}/> : ""
           }
         </div>
       </div>
