@@ -8,7 +8,10 @@ export interface ProductItemProps {
   img?: string;
   status?: number;
   price?: number;
-  buyer?: string;
+  buyer?: {
+    objectId?: string;
+    username?: string;
+  };
 }
 
 const ProductItem = (props: ProductItemProps) => {
@@ -30,7 +33,7 @@ const ProductItem = (props: ProductItemProps) => {
               <div className="buyerIcon">
                 <img width="20px" height="20px" src={buyerIcon} alt="buyer"/>
               </div>
-              <span className="productBuyer">{props.buyer}</span>
+              <span className="productBuyer">{props.buyer.username}</span>
             </div> : ''
         }
         <span className="productStatus">

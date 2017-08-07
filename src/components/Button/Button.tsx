@@ -6,15 +6,15 @@ interface ButtonProps {
     text?: string;
     destination: string;
     disabled?: boolean;
-    handleClick?: (e) => void;
+    handleClick?: (e: object) => void;
 }
 
-const Button = ({disabled = false, handleClick, ...props}: ButtonProps) => (
-    <Link to={props.destination} onClick={handleClick}>
-        <button className="button" disabled={disabled}>
-            {props.text}
+const Button = ({destination, text, disabled = false, handleClick, ...props}: ButtonProps) => (
+    <Link to={destination} onClick={handleClick}>
+        <button className="button" disabled={disabled}> 
+            {text}
         </button>
-    </Link>
+    </Link>   
 );
 
 export default Button;

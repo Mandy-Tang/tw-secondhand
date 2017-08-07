@@ -6,7 +6,7 @@ import { PopUpWrapper } from "../../Layout/Popup/PopUp";
 import Header from "../../../components/Header/Header";
 import Button from "../../../components/Button/Button";
 import { RouteComponentProps } from "react-router";
-import { uploadImageActionCreator } from "../../../modules/product/actions";
+import { uploadImageActionCreator, createProductActionCreator } from "../../../modules/product/actions";
 
 export type PageProps<S> = DispatchProp<S> & RouteComponentProps<S> & {
   uploadedImg?: string
@@ -15,12 +15,28 @@ export type PageProps<S> = DispatchProp<S> & RouteComponentProps<S> & {
 class ReleasePage extends React.Component<PageProps<Object>> {
   constructor(props) {
     super(props);
+    this.state = {};
     this.handleImageUpload = this.handleImageUpload.bind(this);
+    this.handlePostProduct = this.handlePostProduct.bind(this);
   }
 
   handleImageUpload(file) {
     this.props.dispatch(uploadImageActionCreator(file));
   }
+
+  handlePostProduct() {
+    let postData = {
+      ...this.state,
+      "img": this.props.uploadedImg,
+    };
+    this.props.dispatch(createProductActionCreator(postData));
+  }
+
+  updateValueToState = (key) => (e) => {
+    this.setState({
+      [key]: e.target.value,
+    })
+  };
 
   render() {
     return (
@@ -29,15 +45,16 @@ class ReleasePage extends React.Component<PageProps<Object>> {
         <FileUpload onImageUpload={this.handleImageUpload} uploadedImage={this.props.uploadedImg}/>
         <form action="" method="post">
           <div className="inputGroup">
-            <input name="name" type="text" placeholder="商品名称"/>
-            <input name="price" type="text" placeholder="售价￥"/>
+            <input name="name" type="text" placeholder="商品名称" onChange={this.updateValueToState('name')}/>
+            <input name="price" type="text" placeholder="售价￥" onChange={this.updateValueToState('price')}/>
             <textarea
               name="description"
               placeholder="添加描述..."
               rows={10} cols={30}
+              onChange={this.updateValueToState('description')}
             />
           </div>
-          <Button destination="" text="开始出售"/>
+          <Button destination="" text="开始出售" handleClick={this.handlePostProduct}/>
         </form>
       </div>)
   }
