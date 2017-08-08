@@ -14,4 +14,6 @@ export {default as SignUpForm} from './SignUpForm/SignUpForm';
 
 export {default as ProductDetail, ProductDetailProps} from './ProductDetail/ProductDetail';
 
+export {default as CheckLogin } from './CheckLogin/CheckLogin';
+
 export { MenuBar } from './MenuBar/MenuBar';

@@ -3,7 +3,7 @@ import * as Redux from 'redux';
 import { connect, DispatchProp } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { layoutWrapper } from '../../Layout/index';
-import { Header, Logo, Button } from '../../../components';
+import { Header, Logo, Button, CheckLogin } from '../../../components';
 import './ProfilePage.css';
 import { userLogout } from '../../../modules/user/actions';
 
@@ -44,8 +44,8 @@ class ProfilePage extends React.Component<ProfileProps<object>> {
     }
 }
 
-export default layoutWrapper(connect(state => ({
+export default CheckLogin(layoutWrapper(connect(state => ({
     username: state.user.username
 }), (dispatch: Redux.Dispatch<object>) => ({
   onLogout: Redux.bindActionCreators(userLogout, dispatch)
-}))(ProfilePage));
+}))(ProfilePage)));

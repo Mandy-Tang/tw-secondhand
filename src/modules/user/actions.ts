@@ -39,8 +39,8 @@ const signUpEpic: Epic<D.GeneralAction> = (action$) => action$.thru(select(USER_
 const logoutEpic: Epic<D.GeneralAction> = (action$) => action$.thru(select(USER_LOGOUT))
   .chain((action: D.UserAction) => fromPromise(logout()))
   .map(() => {
-    window.localStorage.setItem('username', null);
-    window.localStorage.setItem('sessionToken', null);
+    window.localStorage.setItem('username', '');
+    window.localStorage.setItem('sessionToken', '');
     return {type: USER_LOGOUT_SUC};
   });
 
