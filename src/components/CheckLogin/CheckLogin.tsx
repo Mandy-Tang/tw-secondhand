@@ -4,16 +4,6 @@ import * as React from 'react';
 import * as Redux from 'redux';
 import { connect } from 'react-redux';
 
-// const CheckLogin = (comp) => {
-//   if(Boolean(window.localStorage.getItem('username'))) {
-//     console.log(window.localStorage.getItem('username'))
-//     console.log('islogin')
-//     return comp;
-//   } else {
-//     console.log('not login');
-//   };
-// };
-
 interface CheckLoginProps {
   children?: any;
   dispatch?: Redux.Dispatch<object>;

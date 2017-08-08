@@ -6,7 +6,6 @@ import { layoutWrapper } from '../../Layout/index';
 import { Header, Logo, Button, CheckLogin } from '../../../components';
 import './ProfilePage.css';
 import { userLogout } from '../../../modules/user/actions';
-import CheckLogin from "../../../components/CheckLogin/CheckLogin";
 
 export type ProfileProps<S> = DispatchProp<S> & RouteComponentProps<S> & {
   username: string;
