@@ -10,7 +10,7 @@ import {
 import { fetchJson } from './utils';
 
 let myHeaders = new Headers();
-myHeaders.append('sessionToken', 'ueh6vn3kev9lty83zqedwdaqr');
+myHeaders.append('sessionToken', localStorage.getItem('sessionToken'));
 myHeaders.append('Content-Type', 'application/json');
 
 export const fetchProduct = (): Promise<D.Product[]> => fetchJson(FETCH_PRODUCTS_API, {});
@@ -39,7 +39,7 @@ export const buyProduct = (productId: string) => {
   return fetchJson(BUY_PRODUCT_API + productId, {
     method: 'PUT',
     headers: myHeaders,
-  })
+  });
 };
 
 export const fetchBought = (): Promise<D.Product[]> => {
