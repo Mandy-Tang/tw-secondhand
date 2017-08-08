@@ -13,7 +13,6 @@ describe('<ProductItem />', () => {
         status={0}
       />);
     expect(wrapper.find('.productItem').length).toBe(1);
-    expect(wrapper.hasClass('productItem')).toBe(true);
   });
 
   test('rendering saled ProductItem', () => {
@@ -26,6 +25,6 @@ describe('<ProductItem />', () => {
         buyer={{username: 'pei'}}
       />);
     expect(wrapper.find('span').length).toBe(4);
-    expect(wrapper.hasClass('productItem notActive')).toBe(true);
+    expect(wrapper.find('.productItem .notActive').length).toBe(1);
   });
 });

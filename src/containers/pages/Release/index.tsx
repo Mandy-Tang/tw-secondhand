@@ -1,12 +1,12 @@
-import * as React from 'react'
-import FileUpload from "../../../components/FileUpload/index";
-import './index.css'
-import { connect, DispatchProp } from "react-redux";
-import { PopUpWrapper } from "../../Layout/Popup/PopUp";
-import Header from "../../../components/Header/Header";
-import Button from "../../../components/Button/Button";
-import { RouteComponentProps } from "react-router";
-import { uploadImageActionCreator, createProductActionCreator } from "../../../modules/product/actions";
+import * as React from 'react';
+import FileUpload from '../../../components/FileUpload/index';
+import './index.css';
+import { connect, DispatchProp } from 'react-redux';
+import { PopUpWrapper } from '../../Layout/Popup/PopUp';
+import Header from '../../../components/Header/Header';
+import Button from '../../../components/Button/Button';
+import { RouteComponentProps } from 'react-router';
+import { uploadImageActionCreator, createProductActionCreator } from '../../../modules/product/actions';
 
 export type PageProps<S> = DispatchProp<S> & RouteComponentProps<S> & {
   uploadedImg?: string

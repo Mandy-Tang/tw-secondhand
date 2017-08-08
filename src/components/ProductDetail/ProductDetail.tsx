@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './ProductDetail.css';
-// import { default as Button } from '../Button/Button';
+import Button from '../Button/Button';
 
 const buyerIcon = require('../../containers/resources/buyer.svg');
 
@@ -9,13 +9,19 @@ export interface ProductDetailProps {
   name?: string;
   img?: string;
   price?: number;
-  buyer?: string;
+  buyer?: object;
+  owner?: {
+    username?: string;
+    objectId?: string;
+  };
   description?: string;
+  handleBuy?: any;
 }
+
 class ProductDetail extends React.Component<ProductDetailProps> {
 
-  handleBuy = (): void  => {
-    console.log("buy");
+  handleBuy = (): void => {
+    this.props.handleBuy();
   };
 
   public render() {
@@ -31,12 +37,12 @@ class ProductDetail extends React.Component<ProductDetailProps> {
           <div className="product-price">
             ￥{this.props.price}
             {
-              this.props.buyer ?
+              this.props.owner ?
                 <div className="buyer-area">
                 <span className="buyerIcon">
                   <img width="20px" height="20px" src={buyerIcon} alt="buyer"/>
                 </span>
-                  <span className="productBuyer">{this.props.buyer}</span>
+                  <span className="productBuyer">{this.props.owner.username}</span>
                 </div> : ''
             }
           </div>
@@ -45,7 +51,9 @@ class ProductDetail extends React.Component<ProductDetailProps> {
         <div className="product-details">
           {this.props.description}
         </div>
-        <div className="btn-wrapper"><button onClick={this.handleBuy}>立刻购买</button></div>
+        <div className="btn-wrapper">
+          <Button destination="/" text="立即购买" handleClick={this.handleBuy}/>
+        </div>
       </div>);
   };
 

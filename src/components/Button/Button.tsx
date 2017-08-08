@@ -4,17 +4,17 @@ import './Button.css';
 
 interface ButtonProps {
     text?: string;
-    destination: string;
+    destination?: string;
     disabled?: boolean;
     handleClick?: (e: object) => void;
 }
 
 const Button = ({destination, text, disabled = false, handleClick, ...props}: ButtonProps) => (
     <Link to={destination} onClick={handleClick}>
-        <button className="button" disabled={disabled}> 
+        <button className="button" disabled={disabled}>
             {text}
         </button>
-    </Link>   
+    </Link>
 );
 
 export default Button;
