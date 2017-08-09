@@ -18,7 +18,8 @@ const userReducer: Redux.Reducer<D.UserState> = (state: D.UserState, action: D.U
     case 'USER_LOGOUT_SUC':
       return {
         ...state,
-        user: {},
+        username: '',
+        sessionToken: '',
         isLogin: false
       };
     default:
