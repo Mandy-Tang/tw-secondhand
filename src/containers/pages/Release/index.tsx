@@ -29,7 +29,6 @@ class ReleasePage extends React.Component<PageProps<Object>, { warningMsg?: bool
       ...this.state,
       "img": this.props.uploadedImg,
     };
-    debugger;
     if (this.checkField(postData)) {
       this.props.dispatch(createProductActionCreator(postData));
       this.props.history.push('/');
