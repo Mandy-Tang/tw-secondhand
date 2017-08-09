@@ -20,7 +20,8 @@ export interface ProductDetailProps {
 
 class ProductDetail extends React.Component<ProductDetailProps> {
 
-  handleBuy = (): void => {
+  handleBuy = (e): void => {
+    e.preventDefault();
     this.props.handleBuy();
   };
 

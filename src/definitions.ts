@@ -7,11 +7,11 @@ import * as ReactRouter from 'react-router';
 // BUSINESS LOGIC
 export interface App {
   loading: boolean;
-  logined: boolean;
 }
 
 export interface User {
-  name: string;
+  username: string;
+  isLogin?: boolean;
 }
 
 export interface UserProfile {

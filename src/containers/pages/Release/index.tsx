@@ -3,8 +3,7 @@ import FileUpload from '../../../components/FileUpload/index';
 import './index.css';
 import { connect, DispatchProp } from 'react-redux';
 import { PopUpWrapper } from '../../Layout/Popup/PopUp';
-import Header from '../../../components/Header/Header';
-import Button from '../../../components/Button/Button';
+import { Button, Header, CheckLogin } from '../../../components';
 import { RouteComponentProps } from 'react-router';
 import { uploadImageActionCreator, createProductActionCreator } from '../../../modules/product/actions';
 
@@ -63,6 +62,6 @@ class ReleasePage extends React.Component<PageProps<Object>> {
 const mapStateToProps = (state) => {
   return {
     uploadedImg: state.uploadImg,
-  }
+  };
 }
-export default PopUpWrapper(connect(mapStateToProps)(ReleasePage));
+export default CheckLogin(PopUpWrapper(connect(mapStateToProps)(ReleasePage)));

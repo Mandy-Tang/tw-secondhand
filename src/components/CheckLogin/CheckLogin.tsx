@@ -6,23 +6,16 @@ import { connect } from 'react-redux';
 
 interface CheckLoginProps {
   children?: any;
-  dispatch?: Redux.Dispatch<object>;
-}
-
-interface CheckLoginState {
+  dispatch: Redux.Dispatch<object>;
   isLogin: boolean;
 }
-class CheckLoginComponent extends React.Component<CheckLoginProps, CheckLoginState> {
+
+class CheckLoginComponent extends React.Component<CheckLoginProps> {
   constructor () {
     super();
-    this.state = {
-      isLogin: false
-    };
   }
   componentDidMount() {
-    const isLogin = Boolean(window.localStorage.getItem('username'));
-    this.setState({isLogin});
-    if (!isLogin) {
+    if (!this.props.isLogin) {
       this.props.dispatch(push('/login'));
     }
   }
@@ -31,7 +24,7 @@ class CheckLoginComponent extends React.Component<CheckLoginProps, CheckLoginSta
   }
 }
 
-const ConnectedCheckLogin = connect(state => state)(CheckLoginComponent);
+const ConnectedCheckLogin = connect(state => ({isLogin: state.user.isLogin}))(CheckLoginComponent);
 
 const CheckLogin = InnerComp => (
   function check(props: any) {
