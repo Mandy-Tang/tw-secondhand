@@ -34,7 +34,10 @@ export const createProductActionCreator = (product) => {
 const fetchProductEpic = (action$, store) => action$.thru(select('FETCH_PRODUCTS'))
   .chain(() => {
     store.dispatch({type: 'UPDATE_LOADER', payload: true});
-    return fromPromise(fetchProduct());
+    return fromPromise(fetchProduct().catch(() => {
+        store.dispatch({type: 'UPDATE_LOADER', payload: false});
+      }
+    ));
   })
   .map((results: D.ProductState) => {
     store.dispatch({type: 'UPDATE_LOADER', payload: false});
@@ -42,7 +45,7 @@ const fetchProductEpic = (action$, store) => action$.thru(select('FETCH_PRODUCTS
   });
 
 const uploadImageEpic = (action$, store) => action$.thru(select('UPLOAD_IMAGE'))
-  .chain(() => {
+  .chain((action$) => {
     store.dispatch({type: 'UPDATE_LOADER', payload: true});
     return fromPromise(uploadImage(action$.payload));
   })
